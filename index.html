@@ -14,17 +14,17 @@
 	<body>
 		<div id="header">T<sup>3</sup></div>
 		<div class="gameBoard">
-			<div class="tile" id="one" data-index="1"></div>
-			<div class="tile" id="two" data-index="2"></div>
-			<div class="tile" id="three" data-index="3"></div>
-			<div class="tile" id="four" data-index="4"></div>
-			<div class="tile" id="five" data-index="5"></div>
-			<div class="tile" id="six" data-index="6"></div>
-			<div class="tile" id="seven" data-index="7"></div>
-			<div class="tile" id="eight" data-index="8"></div>
-			<div class="tile" id="nine" data-index="9"></div>
+			<div class="button" id="one" data-index="1"></div>
+			<div class="button" id="two" data-index="2"></div>
+			<div class="button" id="three" data-index="3"></div>
+			<div class="button" id="four" data-index="4"></div>
+			<div class="button" id="five" data-index="5"></div>
+			<div class="button" id="six" data-index="6"></div>
+			<div class="button" id="seven" data-index="7"></div>
+			<div class="button" id="eight" data-index="8"></div>
+			<div class="button" id="nine" data-index="9"></div>
 		</div>
-		<div class="tile" id="resetBtn">Reset</div>
+		<div class="button" id="resetBtn">Reset</div>
 		<div id="footer">
 			<p>The Odin Project / 2021 &nbsp</p>
 			<a href="https://github.com/zanovis" target="_blank"
@@ -38,7 +38,7 @@
 		var gameBoard = (function () {
 			let gameBoard = ['', '', '', '', '', '', '', '', ''];
 			let gameBoardElement = document.getElementsByClassName('gameBoard');
-			let tileElement = document.querySelectorAll('.tile');
+			let tileElement = document.querySelectorAll('[data-index]');
 			let playerTurn = 'one';
 			let resetBtn = document.getElementById('resetBtn');
 

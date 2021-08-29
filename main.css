@@ -62,7 +62,7 @@ body {
 		'seven eight nine';
 }
 
-.tile {
+.button {
 	background-color: var(--tile-color);
 	text-align: center;
 	display: grid;
@@ -73,7 +73,7 @@ body {
 	border-radius: 7px;
 }
 
-.tile:hover {
+.button:hover {
 	transition: transform 0.08s ease-in-out;
 	transform: scale(1.05);
 }
