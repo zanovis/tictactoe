@@ -1,0 +1,113 @@
+:root {
+	--tile-color: #a0aab2;
+	--text-color: #c7cedb;
+	--bg-color: #2e3532;
+	--reset-button-color: #7e9181;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12))
+		drop-shadow(0 1px 5px rgba(0, 0, 0, 0.14))
+		drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12))
+		drop-shadow(0 -1px 3px rgba(0, 0, 0, 0.1));
+	margin-top: 20px;
+}
+
+#header {
+	filter: none;
+	text-align: center;
+	font-size: 65px;
+	translate: 12px;
+	margin: 0 10px 20px 0;
+}
+
+.gameBoard {
+	display: grid;
+	justify-content: center;
+	grid-template-rows: repeat(3, minmax(min-content, 100px));
+	grid-template-columns: repeat(3, minmax(min-content, 100px));
+	grid-template-areas:
+		'one two three'
+		'four five six'
+		'seven eight nine';
+}
+
+#resetBtn {
+	display: grid;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	padding: 10px;
+	margin: 8px auto;
+	margin-bottom: 0px;
+	font-size: 30px;
+	background-color: var(--reset-button-color);
+	max-width: 270px;
+	color: rgb(236, 236, 236);
+	border-radius: 7px;
+}
+
+.tile {
+	background-color: var(--tile-color);
+	text-align: center;
+	display: grid;
+	align-items: center;
+	font-size: 45px;
+	margin: 5px;
+	color: var(--bg-color);
+	border-radius: 7px;
+}
+
+#one {
+	grid-area: one;
+}
+
+#two {
+	grid-area: two;
+}
+#three {
+	grid-area: three;
+}
+#four {
+	grid-area: four;
+}
+#five {
+	grid-area: five;
+}
+#six {
+	grid-area: six;
+}
+#seven {
+	grid-area: seven;
+}
+#eight {
+	grid-area: eight;
+}
+#nine {
+	grid-area: nine;
+}
+
+#footer {
+	clear: left;
+	justify-content: center;
+	display: flex;
+	align-self: center;
+	place-items: center;
+	height: 40px;
+	color: rgb(236, 236, 236);
+	opacity: 0.25;
+	font-size: 14px;
+}
+
+.fa-github {
+	transition: transform 0.4s ease-in-out;
+	color: #94849b;
+}
+
+.fa-github:hover {
+	transform: rotate(360deg) scale(1.2);
+	z-index: 0;
+}

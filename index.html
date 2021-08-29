@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Page Title</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+		<script
+			src="https://kit.fontawesome.com/4c536a6bd5.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div id="header">T<sup>3</sup></div>
+		<div class="gameBoard">
+			<div class="tile" id="one" data-index="1"></div>
+			<div class="tile" id="two" data-index="2"></div>
+			<div class="tile" id="three" data-index="3"></div>
+			<div class="tile" id="four" data-index="4"></div>
+			<div class="tile" id="five" data-index="5"></div>
+			<div class="tile" id="six" data-index="6"></div>
+			<div class="tile" id="seven" data-index="7"></div>
+			<div class="tile" id="eight" data-index="8"></div>
+			<div class="tile" id="nine" data-index="9"></div>
+		</div>
+		<div id="resetBtn">Reset</div>
+		<div id="footer">
+			<p>The Odin Project / 2021 &nbsp</p>
+			<a href="https://github.com/zanovis" target="_blank"
+				><i class="fab fa-github"></i
+			></a>
+		</div>
+	</body>
+	<script defer>
+		//constants
+		//gameboard module
+		var gameBoard = (function () {
+			let gameBoard = ['', '', '', '', '', '', '', '', ''];
+			let gameBoardElement = document.getElementsByClassName('gameBoard');
+			let tileElement = document.querySelectorAll('.tile');
+			let playerTurn = 'one';
+			let resetBtn = document.getElementById('resetBtn');
+
+			var clearBoard = function () {
+				gameBoard = ['', '', '', '', '', '', '', '', ''];
+				for (i = 0; i < tileElement.length; i++) {
+					tileElement[i].textContent = '';
+				}
+			};
+
+			var checkWinner = function (playerTurn) {
+				// if (gameBoard[0]) {
+				if (
+					(gameBoard[0] === gameBoard[4] &&
+						gameBoard[4] === gameBoard[8] &&
+						gameBoard[4] != '') ||
+					(gameBoard[1] === gameBoard[4] &&
+						gameBoard[4] === gameBoard[7] &&
+						gameBoard[4] != '') ||
+					(gameBoard[2] === gameBoard[4] &&
+						gameBoard[4] === gameBoard[6] &&
+						gameBoard[4] != '') ||
+					(gameBoard[3] === gameBoard[4] &&
+						gameBoard[4] === gameBoard[5] &&
+						gameBoard[4] != '') ||
+					(gameBoard[0] === gameBoard[1] &&
+						gameBoard[1] === gameBoard[2] &&
+						gameBoard[1] != '') ||
+					(gameBoard[6] === gameBoard[7] &&
+						gameBoard[7] === gameBoard[8] &&
+						gameBoard[7] != '') ||
+					(gameBoard[0] === gameBoard[3] &&
+						gameBoard[3] === gameBoard[6] &&
+						gameBoard[3] != '') ||
+					(gameBoard[2] === gameBoard[5] &&
+						gameBoard[5] === gameBoard[8] &&
+						gameBoard[5] != '')
+				) {
+					alert(`player ${playerTurn} has won!`);
+					clearBoard();
+				} else if (gameBoard.indexOf('') == -1) {
+					alert(`It's a tie!`);
+					clearBoard();
+				}
+			};
+
+			resetBtn.addEventListener('click', clearBoard);
+
+			tileElement.forEach((element) => {
+				// Update tile on click
+				element.addEventListener('click', function () {
+					if (!element.textContent) {
+						if (playerTurn == 'one') {
+							element.textContent = 'X';
+						} else {
+							element.textContent = 'O';
+						}
+						gameBoard[this.dataset.index - 1] = this.textContent;
+						checkWinner(playerTurn);
+						if (playerTurn == 'one') {
+							playerTurn = 'two';
+						} else {
+							playerTurn = 'one';
+						}
+					}
+				});
+				// Update gameboard from textContent
+			});
+		})();
+		//displayController module
+
+		//player factory
+	</script>
+</html>
