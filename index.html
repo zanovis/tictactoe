@@ -24,7 +24,7 @@
 			<div class="tile" id="eight" data-index="8"></div>
 			<div class="tile" id="nine" data-index="9"></div>
 		</div>
-		<div id="resetBtn">Reset</div>
+		<div class="tile" id="resetBtn">Reset</div>
 		<div id="footer">
 			<p>The Odin Project / 2021 &nbsp</p>
 			<a href="https://github.com/zanovis" target="_blank"
@@ -77,7 +77,7 @@
 						gameBoard[5] === gameBoard[8] &&
 						gameBoard[5] != '')
 				) {
-					alert(`player ${playerTurn} has won!`);
+					alert(`Player ${playerTurn} has won!`);
 					clearBoard();
 				} else if (gameBoard.indexOf('') == -1) {
 					alert(`It's a tie!`);

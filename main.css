@@ -17,22 +17,11 @@ body {
 }
 
 #header {
-	filter: none;
 	text-align: center;
 	font-size: 65px;
-	translate: 12px;
-	margin: 0 10px 20px 0;
-}
-
-.gameBoard {
-	display: grid;
-	justify-content: center;
-	grid-template-rows: repeat(3, minmax(min-content, 100px));
-	grid-template-columns: repeat(3, minmax(min-content, 100px));
-	grid-template-areas:
-		'one two three'
-		'four five six'
-		'seven eight nine';
+	max-width: 100px;
+	margin: 4px auto;
+	translate: 14px;
 }
 
 #resetBtn {
@@ -50,6 +39,29 @@ body {
 	border-radius: 7px;
 }
 
+#footer {
+	clear: left;
+	justify-content: center;
+	display: flex;
+	align-self: center;
+	place-items: center;
+	height: 40px;
+	color: rgb(236, 236, 236);
+	opacity: 0.25;
+	font-size: 14px;
+}
+
+.gameBoard {
+	display: grid;
+	justify-content: center;
+	grid-template-rows: repeat(3, minmax(min-content, 100px));
+	grid-template-columns: repeat(3, minmax(min-content, 100px));
+	grid-template-areas:
+		'one two three'
+		'four five six'
+		'seven eight nine';
+}
+
 .tile {
 	background-color: var(--tile-color);
 	text-align: center;
@@ -59,6 +71,22 @@ body {
 	margin: 5px;
 	color: var(--bg-color);
 	border-radius: 7px;
+}
+
+.tile:hover {
+	transition: transform 0.08s ease-in-out;
+	transform: scale(1.05);
+}
+
+.fa-github {
+	transition: transform 0.4s ease-in-out;
+	color: #94849b;
+	font-size: 20px;
+}
+
+.fa-github:hover {
+	transform: rotate(360deg) scale(1.2);
+	z-index: 0;
 }
 
 #one {
@@ -88,26 +116,4 @@ body {
 }
 #nine {
 	grid-area: nine;
-}
-
-#footer {
-	clear: left;
-	justify-content: center;
-	display: flex;
-	align-self: center;
-	place-items: center;
-	height: 40px;
-	color: rgb(236, 236, 236);
-	opacity: 0.25;
-	font-size: 14px;
-}
-
-.fa-github {
-	transition: transform 0.4s ease-in-out;
-	color: #94849b;
-}
-
-.fa-github:hover {
-	transform: rotate(360deg) scale(1.2);
-	z-index: 0;
 }
