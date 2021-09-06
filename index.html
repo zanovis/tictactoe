@@ -13,7 +13,8 @@
 	</head>
 	<body>
 		<div id="header">T<sup>3</sup></div>
-		<div class="gameBoard">
+		<div id="winner"></div>
+		<div id="gameBoard" class="gameBoard">
 			<div class="button" id="one" data-index="1"></div>
 			<div class="button" id="two" data-index="2"></div>
 			<div class="button" id="three" data-index="3"></div>
@@ -33,6 +34,11 @@
 		</div>
 	</body>
 	<script defer>
+		// TODO:
+		// 1. ADD AI PLAYER
+		// 2. ALLOW SELECTION OF MARKER
+		// 3. DISPLAY WINNER IN A DIV		DONE
+		// 4. DISPLAY MARKER ON HOVER 		DONE
 		//constants
 		//gameboard module
 		var gameBoard = (function () {
@@ -41,15 +47,19 @@
 			let tileElement = document.querySelectorAll('[data-index]');
 			let playerTurn = 'one';
 			let resetBtn = document.getElementById('resetBtn');
+			let winnerDiv = document.getElementById('winner');
 
-			var clearBoard = function () {
+			var clearBoard = function (winnerDiv) {
 				gameBoard = ['', '', '', '', '', '', '', '', ''];
 				for (i = 0; i < tileElement.length; i++) {
 					tileElement[i].textContent = '';
 				}
+				winnerDiv = document.getElementById('winner');
+				winnerDiv.innerText = ' ';
+				playerTurn = 'one';
 			};
 
-			var checkWinner = function (playerTurn) {
+			var checkWinner = function (playerTurn, gameBoardElement) {
 				// if (gameBoard[0]) {
 				if (
 					(gameBoard[0] === gameBoard[4] &&
@@ -77,8 +87,9 @@
 						gameBoard[5] === gameBoard[8] &&
 						gameBoard[5] != '')
 				) {
-					alert(`Player ${playerTurn} has won!`);
-					clearBoard();
+					// alert(`Player ${playerTurn} has won!`);
+					// let winnerDiv = document.getElementById('winner');
+					winnerDiv.textContent = `Player ${playerTurn} has won!`;
 				} else if (gameBoard.indexOf('') == -1) {
 					alert(`It's a tie!`);
 					clearBoard();
@@ -90,7 +101,7 @@
 			tileElement.forEach((element) => {
 				// Update tile on click
 				element.addEventListener('click', function () {
-					if (!element.textContent) {
+					if (temporary == true) {
 						if (playerTurn == 'one') {
 							element.textContent = 'X';
 						} else {
@@ -104,7 +115,24 @@
 							playerTurn = 'one';
 						}
 					}
+					temporary = false;
 				});
+				element.addEventListener('mouseover', function () {
+					if (this.textContent == '') {
+						if (playerTurn == 'one') {
+							this.textContent = 'X';
+						} else {
+							this.textContent = 'O';
+						}
+					}
+					temporary = true;
+				});
+				element.addEventListener('mouseout', function () {
+					if (temporary == true) {
+						if (gameBoard[this.dataset.index - 1] === '') this.textContent = '';
+					}
+				});
+
 				// Update gameboard from textContent
 			});
 		})();
